@@ -201,31 +201,31 @@ if __name__ == "__main__":
         mine = markov.MarkovChainer(order)
         for status in source_statuses:
             if not re.search('([\.\!\?\"\']$)', status):
-                status += "."
+                status += "?" #add a question mark at the end if one not found to keep the askreddit question thing consistent
             mine.add_text(status)
         for x in range(0, 10):
             ebook_status = mine.generate_sentence()
 
         # randomly drop the last word, as Horse_ebooks appears to do.
-        if random.randint(0, 4) == 0 and re.search(r'(in|to|from|for|with|by|our|of|your|around|under|beyond)\s\w+$', ebook_status) is not None:
-            print("Losing last word randomly")
-            ebook_status = re.sub(r'\s\w+.$', '', ebook_status)
-            print(ebook_status)
+        #if random.randint(0, 4) == 0 and re.search(r'(in|to|from|for|with|by|our|of|your|around|under|beyond)\s\w+$', ebook_status) is not None:
+        #    print("Losing last word randomly")
+        #    ebook_status = re.sub(r'\s\w+.$', '', ebook_status)
+        #    print(ebook_status)
 
         # if a tweet is very short, this will randomly add a second sentence to it.
-        if ebook_status is not None and len(ebook_status) < 40:
-            rando = random.randint(0, 10)
-            if rando == 0 or rando == 7:
-                print("Short tweet. Adding another sentence randomly")
-                newer_status = mine.generate_sentence()
-                if newer_status is not None:
-                    ebook_status += " " + mine.generate_sentence()
-                else:
-                    ebook_status = ebook_status
-            elif rando == 1:
-                # say something crazy/prophetic in all caps
-                print("ALL THE THINGS")
-                ebook_status = ebook_status.upper()
+        #if ebook_status is not None and len(ebook_status) < 40:
+        #    rando = random.randint(0, 10)
+        #    if rando == 0 or rando == 7:
+        #        print("Short tweet. Adding another sentence randomly")
+        #        newer_status = mine.generate_sentence()
+        #        if newer_status is not None:
+        #            ebook_status += " " + mine.generate_sentence()
+        #        else:
+        #            ebook_status = ebook_status
+        #    elif rando == 1:
+        #        # say something crazy/prophetic in all caps
+        #        print("ALL THE THINGS")
+        #        ebook_status = ebook_status.upper()
 
         # throw out tweets that match anything from the source account.
         if ebook_status is not None and len(ebook_status) < 210:
