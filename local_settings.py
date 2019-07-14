@@ -33,7 +33,7 @@ WEB_ATTRIBUTES = [{'class': 'example-text'}, {}] # A list of dictionaries contai
 ODDS = 0  # How often do you want this to run? 0 for every time, set to n for 1/n times
 ORDER = 2  # How closely do you want this to hew to sensical? 2 is low and 4 is high.
 
-DEBUG = False # Set this to False to start Tweeting live
+DEBUG = True # Set this to False to start Tweeting live
 TWEET_ACCOUNT = "askreddit_ebook"  # The name of the account you're tweeting to.
 
 #Configuration for Twitter parser. TEST_SOURCE will be re-used as as the corpus location.
