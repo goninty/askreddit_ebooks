@@ -3,7 +3,6 @@ import re
 import sys
 import twitter
 import markov
-from bs4 import BeautifulSoup
 from local_settings import *
 from get_askreddit_data import get_titles
 
@@ -54,9 +53,7 @@ def filter_status(text):
     text = re.sub(r'\xe9', 'e', text)  # take out accented e
     return text
 
-if __name__ == "__main__":
-    #get_titles() #get the askreddit titles, this func exists in get_askreddit_data.py
-    
+if __name__ == "__main__":    
     order = ORDER #the "sensical-ness" value from local_settings.py
     guess = 0
     if ODDS and not DEBUG: #if not in debug, give it a roll
@@ -69,13 +66,6 @@ if __name__ == "__main__":
         #connect to twitter api, initalize source list
         api = connect()
         source_titles = get_titles() #get the askreddit titles, this func exists in get_askreddit_data.py
-        
-        #file = SOURCE
-        #print(">>> Generating from {0}".format(file))
-        #string_list = open(file).readlines()
-        #for item in string_list:
-            #item = filter_status(item)
-            #source_titles += item.split("\n") #not csv anymore, eat my ass senpai
 
         if len(source_titles) == 0:
             print("No statuses found!")
@@ -89,7 +79,7 @@ if __name__ == "__main__":
             mine.add_text(status)
         
         for x in range(0, 10):
-            ebook_status = mine.generate_sentence()
+            ebook_status = mine.generate_sentence() #done generate the thing now
 
         # throw out tweets that match anything from the source
         similar = True
