@@ -5,6 +5,7 @@ import twitter
 from mastodon import Mastodon
 import markov
 from bs4 import BeautifulSoup
+from local_settings import *
 from get_askreddit_data import get_titles
 
 try:
