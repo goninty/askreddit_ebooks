@@ -16,7 +16,7 @@ REDDIT_CLIENT_SECRET = environ.get('REDDIT_CLIENT_SECRET')
 REDDIT_REDIRECT_URI = environ.get('REDDIT_REDIRECT_URI')
 REDDIT_USER_AGENT = environ.get('REDDIT_USER_AGENT')
 
-ODDS = 0  # How often do you want this to run? 0 for every time, set to n for 1/n times
+ODDS = 2  # How often do you want this to run? 0 for every time, set to n for 1/n times
 ORDER = 2  # How closely do you want this to hew to sensical? 2 is low and 4 is high.
 
 DEBUG = False # Set this to False to start Tweeting live
